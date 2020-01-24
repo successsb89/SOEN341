@@ -6,6 +6,18 @@ Projet name: VibeZ
 
 Programming languages: React, Node.js, TBD
 
-Team members ==>
+== Core features ==
+1.Ability to post pictures
+2.Ability to follow users
+3.Leave comment on pictures
+
+== Extra features ==
+1.Rating system: what is the "vibe" of the content the user sees
+default vibes + custom vibes dynamically added by users/followers.
+Users may decide to react using custom vibes.
+
+2.News feed similar to Instagram
+
+== Team members ==
 
     Real name: Kevin Zhong Hao Li, GitHub user kevinlizh1992
