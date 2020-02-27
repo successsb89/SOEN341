@@ -3,6 +3,18 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 class UnconnectedProfile extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { results: [] };
+  }
+  handleSearch = event => {
+    const query = event.target.value;
+    const results = this.props.user.filter(item => {
+      return item.username.includes(query);
+    });
+    console.log(results);
+    this.setState({ results: results });
+  };
   render() {
     const profileUser = this.props.user.find(
       e => e.username === this.props.mainUser
@@ -12,6 +24,12 @@ class UnconnectedProfile extends Component {
       <div>
         <h1>Welcome, {this.props.mainUser}!</h1>
         <img height="100px" src={profileUser.frontendPath} />
+        <input placeholder="Search" onChange={this.handleSearch} />
+        <div>
+          {this.state.results.map(e => {
+            return <div>{e.username}</div>;
+          })}
+        </div>
         Profile page
         <Link to="/upload">
           <button>+</button>
