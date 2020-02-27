@@ -9,6 +9,14 @@ class UnconnectedApp extends Component {
     super(props);
     this.state = { username: "" };
   }
+  componentDidMount = async () => {
+    let response = await fetch("/all-users");
+    let body = await response.text();
+    console.log("/all-users response", body);
+    body = JSON.parse(body);
+    this.setState({ user: body });
+    this.props.dispatch({ type: "SET_USER", users: body });
+  };
 
   setUsername = username => {
     this.setState({ username: username });
