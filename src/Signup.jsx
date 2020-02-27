@@ -4,7 +4,12 @@ import { connect } from "react-redux";
 class UnconnectedSignup extends Component {
   constructor(props) {
     super(props);
-    this.state = { username: undefined, password: undefined };
+    this.state = {
+      username: undefined,
+      password: undefined,
+      file: "",
+      previewImg: ""
+    };
   }
 
   handleSubmit = async event => {
@@ -12,6 +17,7 @@ class UnconnectedSignup extends Component {
     let data = new FormData();
     data.append("username", this.state.username);
     data.append("password", this.state.password);
+    data.append("img", this.state.file);
     let response = await fetch("/signup", {
       method: "POST",
       body: data
@@ -38,10 +44,16 @@ class UnconnectedSignup extends Component {
   handleClick = () => {
     this.props.dispatch({ type: "signup-success" });
   };
+  fileChangeHandler = event => {
+    this.setState({
+      file: event.target.files[0],
+      previewImg: URL.createObjectURL(event.target.files[0])
+    });
+  };
   render() {
     return (
       <div className="signup-form">
-        <form class="" onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <h1>Sign up!</h1>
           <h1>Vibez users!</h1>
           <div>
@@ -61,12 +73,17 @@ class UnconnectedSignup extends Component {
             />
           </div>
           <div>
+            <input type="file" onChange={this.fileChangeHandler}></input>
+            <img height="100px" src={this.state.previewImg} />
+          </div>
+          <div>
             <input
               type="submit"
               value="Create Account"
               className="signup-btn"
             />
           </div>
+
           <div className="signup-btn-b">
             <button onClick={this.handleClick}>Already Users?</button>
           </div>

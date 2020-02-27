@@ -13,16 +13,20 @@ app.use("/uploads", express.static("uploads"));
 
 let dbo = undefined;
 let url =
-  "mongodb+srv://bob:bobsue@cluster0-vtck9.mongodb.net/test?retryWrites=true&w=majority";
+  "mongodb+srv://bob:bob123@cluster0-mijro.mongodb.net/test?retryWrites=true&w=majority";
 MongoClient.connect(url, { useUnifiedTopology: true }, (err, db) => {
   dbo = db.db("Vibez");
 });
 
-app.post("/signup", upload.none(), (req, res) => {
+app.post("/signup", upload.single("img"), (req, res) => {
   console.log("signup", req.body);
   let name = req.body.username;
   let pwd = req.body.password;
-  dbo.collection("users").insertOne({ username: name, password: pwd });
+  let file = req.file;
+  let frontendPath = "/uploads/" + file.filename;
+  dbo
+    .collection("users")
+    .insertOne({ username: name, password: pwd, frontendPath: frontendPath });
   res.send(JSON.stringify({ success: true }));
 });
 
@@ -66,6 +70,21 @@ app.get("/find-all", (req, res) => {
         return;
       }
       console.log("posts", ps);
+      res.send(JSON.stringify(ps));
+    });
+});
+app.get("/all-users", (req, res) => {
+  console.log("request to /all-users");
+  dbo
+    .collection("users")
+    .find({})
+    .toArray((err, ps) => {
+      if (err) {
+        console.log("error", err);
+        res.send("fail");
+        return;
+      }
+      console.log("users", ps);
       res.send(JSON.stringify(ps));
     });
 });

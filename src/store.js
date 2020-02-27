@@ -10,6 +10,9 @@ const reducer = (state, action) => {
   return state;
 };
 
-const store = createStore(reducer, { signup: false, loggedIn: false });
+const store = createStore(reducer, {
+  signup: false,
+  loggedIn: false
+});
 
 export default store;

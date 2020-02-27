@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 class Profile extends Component {
+  componentDidMount() {
+    console.log(this.props.user);
+  }
   render() {
     return (
       <div>
-        <h1>Welcome, {this.props.user}!</h1>
+        <h1>Welcome, {this.props.user.username}!</h1>
+        <img src={this.props.user.frontendPath} />
         Profile page
         <Link to="/upload">
           <button>+</button>

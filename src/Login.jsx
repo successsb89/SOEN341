@@ -36,7 +36,7 @@ class UnconnectedLogin extends Component {
   render() {
     return (
       <div className="signup-form">
-        <form class="" onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <h1>Already in?</h1>
           <div>
             <input
