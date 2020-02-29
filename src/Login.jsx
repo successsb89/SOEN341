@@ -35,19 +35,32 @@ class UnconnectedLogin extends Component {
   };
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <h2>Log in</h2>
-        <div>
-          <input type="text" onChange={this.handleUsername} /> username
-        </div>
-        <div>
-          <input type="text" onChange={this.handlePassword} /> password
-        </div>
-        <input type="submit" />
-      </form>
+      <div className="signup-form">
+        <form class="" onSubmit={this.handleSubmit}>
+          <h1>Vibez</h1>
+          <div>
+            <input
+              type="text"
+              placeholder="User Name"
+              className="txtb"
+              onChange={this.handleUsername}
+            />
+          </div>
+          <div>
+            <input
+              type="password"
+              placeholder="Password"
+              className="txtb"
+              onChange={this.handlePassword}
+            />
+          </div>
+          <div>
+            <input type="submit" value="Login" className="signup-btn" />
+          </div>
+        </form>
+      </div>
     );
   }
 }
 let Login = connect()(UnconnectedLogin);
-
 export default Login;

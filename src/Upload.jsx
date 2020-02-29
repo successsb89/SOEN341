@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class Upload extends Component {
   constructor() {
@@ -26,19 +27,31 @@ class Upload extends Component {
   render() {
     return (
       <form onSubmit={this.submitHandler}>
-        <h1>{this.props.user}</h1>
-        <input type="file" onChange={this.handleImage} />
+        <h1>UPLOAD</h1>
+        <input
+          className="custom-file-input"
+          type="file"
+          onChange={this.handleImage}
+        />
         <div>
           <img height="150px" src={this.state.previewImg} />
         </div>
         <div>
-          <input
-            type="text"
-            placeholder="description"
+          <textarea
+            className="tb5"
+            placeholder="Picture description"
             onChange={this.descriptionHandler}
           />
         </div>
-        <input type="submit" />
+        <div className="push-upload-btns">
+          <input className="profile-btn" type="submit" />
+          <button className="profile-btn">
+            {" "}
+            <Link className="nodecor" to="/">
+              Profile
+            </Link>
+          </button>
+        </div>
       </form>
     );
   }
