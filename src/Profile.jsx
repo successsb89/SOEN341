@@ -22,24 +22,30 @@ class UnconnectedProfile extends Component {
 
     return (
       <div>
-        <h1>Welcome, {this.props.mainUser}!</h1>
-        <img height="100px" src={profileUser.frontendPath} />
         <input placeholder="Search" onChange={this.handleSearch} />
         <div>
           {this.state.results.map(e => {
             return <div>{e.username}</div>;
           })}
         </div>
-        Profile page
-        <Link to="/upload">
-          <button>+</button>
-        </Link>
+        <h1 className="test">
+          <img height="100px" src={profileUser.frontendPath} />
+          Welcome, {this.props.mainUser}!
+        </h1>
+        {/* <img height="100px" src={profileUser.frontendPath} /> */}
+        <div className="push-profile-btns">
+          <button className="profile-btn">Edit Profile</button>
+          <button className="profile-btn">Following</button>
+          <Link to="/upload">
+            <button className="profile-btn">Add Picture</button>
+          </Link>
+        </div>
         {this.props.post
           .filter(e => e.username === this.props.mainUser)
           .map(e => {
             return (
-              <div className="test">
-                <img height="150px" width="200px" src={e.frontendPath} />
+              <div className="picsadded">
+                <img height="50%" width="50%" src={e.frontendPath} />
                 <div>{e.description}</div>
               </div>
             );

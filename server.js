@@ -13,7 +13,7 @@ app.use("/uploads", express.static("uploads"));
 
 let dbo = undefined;
 let url =
-  "mongodb+srv://bob:bob123@cluster0-mijro.mongodb.net/test?retryWrites=true&w=majority";
+  "mongodb+srv://bob:bobsue@cluster0-vtck9.mongodb.net/test?retryWrites=true&w=majority";
 MongoClient.connect(url, { useUnifiedTopology: true }, (err, db) => {
   dbo = db.db("Vibez");
 });

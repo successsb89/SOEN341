@@ -54,8 +54,8 @@ class UnconnectedSignup extends Component {
     return (
       <div className="signup-form">
         <form onSubmit={this.handleSubmit}>
-          <h1>Sign up!</h1>
-          <h1>Vibez users!</h1>
+          <h1></h1>
+          <h1>Vibez</h1>
           <div>
             <input
               type="text"
@@ -83,10 +83,9 @@ class UnconnectedSignup extends Component {
               className="signup-btn"
             />
           </div>
-
-          <div className="signup-btn-b">
-            <button onClick={this.handleClick}>Already Users?</button>
-          </div>
+          <button className="vibe-btn" onClick={this.handleClick}>
+            Sign in
+          </button>
         </form>
       </div>
     );

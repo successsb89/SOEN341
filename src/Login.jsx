@@ -37,7 +37,7 @@ class UnconnectedLogin extends Component {
     return (
       <div className="signup-form">
         <form onSubmit={this.handleSubmit}>
-          <h1>Already in?</h1>
+          <h1>Vibez</h1>
           <div>
             <input
               type="text"
@@ -55,7 +55,7 @@ class UnconnectedLogin extends Component {
             />
           </div>
           <div>
-            <input type="submit" value="Log-in" className="signup-btn" />
+            <input type="submit" value="Login" className="signup-btn" />
           </div>
         </form>
       </div>
