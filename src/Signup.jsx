@@ -11,7 +11,8 @@ class UnconnectedSignup extends Component {
       previewImg: ""
     };
   }
-
+  // communicate with mongoDB through handlesubmit component. using by formdata, can connect to the server 'multer'
+  // change happens when form 'onsubmit' is clickeed.
   handleSubmit = async event => {
     event.preventDefault();
     let data = new FormData();
@@ -44,12 +45,17 @@ class UnconnectedSignup extends Component {
   handleClick = () => {
     this.props.dispatch({ type: "signup-success" });
   };
+  // this is eventhadler. it brings the info from constructor. showing only one picture from file array = .files[0]
+  // receive an URL of the file which will be uploaded. then pass this file to render component of the div of input file to show the file.
   fileChangeHandler = event => {
     this.setState({
       file: event.target.files[0],
       previewImg: URL.createObjectURL(event.target.files[0])
     });
   };
+  /*piture on the profile page - input type file
+  lmg pag for showing the pre-picture
+  */
   render() {
     return (
       <div className="signup-form">
@@ -72,6 +78,7 @@ class UnconnectedSignup extends Component {
               onChange={this.handlePassword}
             />
           </div>
+
           <div>
             <input type="file" onChange={this.fileChangeHandler}></input>
             <img height="100px" src={this.state.previewImg} />

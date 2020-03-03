@@ -7,6 +7,7 @@ class UnconnectedProfile extends Component {
     super(props);
     this.state = { results: [] };
   }
+  // search bar. using by filter, find the exact info that user wants.
   handleSearch = event => {
     const query = event.target.value;
     const results = this.props.user.filter(item => {
@@ -16,6 +17,7 @@ class UnconnectedProfile extends Component {
     this.setState({ results: results });
   };
   render() {
+    // give the condition so that only applicable user will be selected and profile picture will show.
     const profileUser = this.props.user.find(
       e => e.username === this.props.mainUser
     );
@@ -54,8 +56,11 @@ class UnconnectedProfile extends Component {
     );
   }
 }
+// also have to show all info which comes from store.(중앙에서 받아온 정보를보여줘야한다)
+// get posts and users from store.js
 let mapStateToProps = state => {
   return { post: state.posts, user: state.users };
 };
+// connect to redux
 let Profile = connect(mapStateToProps)(UnconnectedProfile);
 export default Profile;

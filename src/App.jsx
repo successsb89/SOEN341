@@ -9,6 +9,9 @@ class UnconnectedApp extends Component {
     super(props);
     this.state = { username: "" };
   }
+
+  // reference : store.js
+  //redux between app and sotre for user profile picture.
   componentDidMount = async () => {
     let response = await fetch("/all-users");
     let body = await response.text();

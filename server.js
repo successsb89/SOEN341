@@ -18,6 +18,10 @@ MongoClient.connect(url, { useUnifiedTopology: true }, (err, db) => {
   dbo = db.db("Vibez");
 });
 
+// signup endpoint. through this endpoint, all the data will be sent to the server
+// single img has to upload when user creates account.
+// dbo is only for saving following sources in the DB using by collection and insertOne.
+// until this step will show: sign-up-upload user profile pic-send all info to mongoDB
 app.post("/signup", upload.single("img"), (req, res) => {
   console.log("signup", req.body);
   let name = req.body.username;
